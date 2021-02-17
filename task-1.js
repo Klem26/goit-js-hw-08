@@ -60,6 +60,8 @@ function galleryClickHandler(event) {
 }
 
 function openModalHandler(event) {
+  window.addEventListener('keydown', escapeClickHandler);
+  
   if (event.target.nodeName !== 'IMG') {
     return;
   }
@@ -79,6 +81,7 @@ lightboxRef.classList.add('is-open');
 
 // Закрытие модального окна
 function closeModalHandler() {
+ window.removeEventListener('keydown', escapeClickHandler);
 
  lightboxRef.classList.remove('is-open');
 
@@ -92,4 +95,8 @@ function backdropModalHandler(event) {
 }
 
 
-
+function escapeClickHandler(event) {
+  if (event.code === 'Escape') {
+    closeModalHandler();
+  }
+}
