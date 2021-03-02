@@ -68,17 +68,6 @@ function openModalHandler(event) {
 lightboxRef.classList.add('is-open');
  
 }
-
-// function openModalHandler(e) {
-//   const isImagesContainerEl = e.target.nodeName === 'IMG'
-
-//   if (!isImagesContainerEl) {
-//     return;
-//   } 
-// lightboxRef.classList.add('is-open');
-
-// }
-
 // Закрытие модального окна
 function closeModalHandler() {
  window.removeEventListener('keydown', escapeClickHandler);
