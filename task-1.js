@@ -89,3 +89,30 @@ function escapeClickHandler(event) {
     closeModalHandler();
   }
 }
+
+// Переключение с помощью стрелок
+
+window.addEventListener('keydown', toSwitchImagesInModal);
+  
+function toSwitchImagesInModal(e) {
+  let currentIndex = [...galleryItems ]
+    .map(i => i.original)
+    .findIndex(i => i === imageLightboxRef.src);
+  if (e.code === 'ArrowRight' && currentIndex < galleryItems.length - 1) {
+    currentIndex += 1;
+  } else if (e.code === 'ArrowLeft' && currentIndex > 0) {
+    currentIndex -= 1;
+  } else {
+   closeModalHandler();
+  }
+
+  changeDataInCurrentImage(
+    galleryItems[currentIndex].original,
+    galleryItems[currentIndex].description,
+  );
+}
+
+function changeDataInCurrentImage(src, alt) {
+ imageLightboxRef.src = src;
+ imageLightboxRef.alt = alt;
+}
